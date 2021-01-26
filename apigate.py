@@ -11,16 +11,21 @@ def welcome():
     return jsonify({'status': "SUCCESS", 'message': "A basic steganography API. We accept only POST. Read more here: http://talkweb.eu/openweb/3122/"})
 
 
-@app.route("/steg", methods=["POST"])
+@app.route("/steg", methods=["POST","GET"])
 def process_image():
-    file = request.files['image']
-    try:
-        img = Image.open(file.stream)
-        msg ="sucess"
-        mmsg = lsb.reveal(img)
-    except:
-        msg = "error"
-        mmsg = "Something went wrong. Maybe you are not sending a picture"
+    if request.method == 'POST':
+
+        file = request.files['image']
+        try:
+            img = Image.open(file.stream)
+            msg ="sucess"
+            mmsg = lsb.reveal(img)
+        except:
+            msg = "error"
+            mmsg = "Something went wrong. Maybe you are not sending a picture"
+    else:
+            msg = "info"
+            mmsg = "A basic steganography API. We accept only POST. Read more here: http://talkweb.eu/openweb/3122/"
 
     return jsonify({'status': msg, 'message': mmsg})
 
