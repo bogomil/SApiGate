@@ -6,12 +6,6 @@ import os
 
 app = Flask(__name__)
 
-@app.route("/", methods=["GET"])
-def welcome():
-    return jsonify({'status': "SUCCESS", 'message': "IT WORKS"})
-
-
-
 @app.route("/steg", methods=["POST"])
 def process_image():
     file = request.files['image']
