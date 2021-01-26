@@ -8,7 +8,7 @@ app = Flask(__name__)
 
 @app.route("/", methods=["GET"])
 def welcome():
-    return jsonify({'status': "SUCCESS", 'message': "A basic steganography API."})
+    return jsonify({'status': "SUCCESS", 'message': "A basic steganography API. We accept only POST. Read more here: http://talkweb.eu/openweb/3122/"})
 
 
 @app.route("/steg", methods=["POST"])
