@@ -20,5 +20,4 @@ def process_image():
     return jsonify({'status': msg, 'message': mmsg})
 
 if __name__ == '__main__':
-    port = int(os.environ.get('PORT', 5000))
-    app.run(host='sapigate.herokuapp.com', port=port) 
+    app.run(threaded=True, port=5000)
