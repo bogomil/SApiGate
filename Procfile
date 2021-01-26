@@ -1,1 +1,1 @@
-web gunicorn apigate:app
+web: gunicorn apigate:app
